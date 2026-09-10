@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Impact — Food Waste &amp; Food Security — LastBite</title>
+<meta name="description" content="Sourced, dated data on food security and undernourishment in India, plus LastBite's own impact calculator.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body data-page="impact">
+<div id="site-header"></div>
+
+<section class="hero" style="padding:56px 0 60px;">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--amber);">The Impact</span>
+    <h1 style="font-size:38px;">Food waste &amp; food security, sourced and dated.</h1>
+    <p class="lede">Every figure below names its source and whether it's an official report or a calculated estimate. We never present a calculated number as an official statistic.</p>
+  </div>
+</section>
+
+<section class="wrap section">
+  <h3>LastBite's own impact, right now</h3>
+  <div class="stat-grid" id="lastbite-stats"></div>
+</section>
+
+<section class="wrap section section-soft" style="border-radius:24px;">
+  <span class="eyebrow">Impact calculator</span>
+  <h3>What could rescuing more meals look like?</h3>
+  <div class="field" style="max-width:420px;">
+    <label>Meals rescued</label>
+    <input type="range" id="calc-range" min="1" max="10000" value="100" step="1">
+    <p class="hint"><span id="calc-value">100</span> meals</p>
+  </div>
+  <div class="calc-box" style="margin-top:10px;">
+    <div class="item"><b id="calc-food">—</b><span>Food diverted (kg, est.)</span></div>
+    <div class="item"><b id="calc-saved">—</b><span>Consumer savings (est.)</span></div>
+    <div class="item"><b id="calc-recovered">—</b><span>Seller revenue recovered (est.)</span></div>
+    <div class="item"><b id="calc-donations">—</b><span>Of which, donated meals (est.)</span></div>
+  </div>
+  <p class="hint" style="margin-top:10px;">Formula: ~0.35 kg per meal, ₹65 average consumer saving per rescued meal, ₹100 average revenue recovered per meal for sellers, and 15% of volume modeled as donations. These are illustrative assumptions for this prototype, not measured outcomes.</p>
+</section>
+
+<section class="wrap section">
+  <span class="eyebrow">National data, 2000–2026</span>
+  <h3>India: food security indicators over time</h3>
+  <div id="chart-blocks"></div>
+</section>
+
+<section class="wrap section section-soft" style="border-radius:24px;">
+  <h4>Data sources</h4>
+  <ul id="source-list" style="color:var(--ink-soft);padding-left:18px;"></ul>
+  <p class="hint">Where a reliable source reports only an annual figure, we show the annual figure and, only where mathematically meaningful, a clearly labelled calculated daily average (annual ÷ 365) — never presented as an official daily statistic.</p>
+</section>
+
+<div id="site-footer"></div>
+<div id="bottom-nav"></div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/impact.js"></script>
+</body>
+</html>

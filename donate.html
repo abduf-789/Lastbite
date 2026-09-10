@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate food — LastBite</title>
+<meta name="description" content="Send surplus food from a function, event, or restaurant to a verified nearby organization.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="donate">
+<div id="site-header"></div>
+
+<section class="hero" style="padding:56px 0 70px;">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--amber);">Donate</span>
+    <h1 style="font-size:38px;">Share food. Create impact.</h1>
+    <p class="lede">From a wedding, a function, a restaurant, or your own kitchen — LastBite finds a verified nearby organization and arranges pickup and delivery.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>2,150</b><span>Meals donated</span></div>
+      <div class="hero-stat"><b>18</b><span>Partner organizations</span></div>
+      <div class="hero-stat"><b>96%</b><span>Delivered within 3 hours</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="tabbar">
+    <button class="on" data-tab="new">New donation</button>
+    <button data-tab="mine">My donations</button>
+    <button data-tab="about">How it works</button>
+  </div>
+
+  <!-- NEW DONATION -->
+  <div id="tab-new">
+    <div id="step-locate" class="card">
+      <h3>Step 1 · Find a nearby organization</h3>
+      <p class="lede">We'll use your location to show verified children's homes and community kitchens currently accepting food.</p>
+      <button class="btn btn-primary" id="find-orgs">Find nearby organizations</button>
+    </div>
+
+    <div id="step-orgs" class="grid" style="grid-template-columns:repeat(2,1fr);margin-top:20px;" hidden></div>
+
+    <div id="step-form" class="card" style="margin-top:20px;" hidden>
+      <h3>Step 2 · Tell us about the food</h3>
+      <p class="hint" id="chosen-org-line"></p>
+      <form id="donation-form">
+        <div class="form-row">
+          <div class="field"><label>Food name</label><input type="text" name="foodName" required placeholder="e.g. Vegetable pulao"></div>
+          <div class="field"><label>Category</label><select name="category" id="donate-category"></select></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Approx. servings</label><input type="number" name="servings" min="1" required placeholder="e.g. 40"></div>
+          <div class="field"><label>Vegetarian?</label>
+            <select name="veg"><option value="veg">Vegetarian</option><option value="nonveg">Non-vegetarian</option><option value="mixed">Mixed</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Prepared at</label><input type="time" name="preparedAt" required></div>
+          <div class="field"><label>Safe to consume until</label><input type="time" name="consumeBy" required></div>
+        </div>
+        <div class="field"><label>Storage condition</label>
+          <select name="storage"><option>Kept hot / covered</option><option>Refrigerated</option><option>Room temperature</option></select>
+        </div>
+        <div class="field"><label>Source of food</label>
+          <select name="source">
+            <option>Marriage function</option><option>Birthday function</option><option>Cultural function</option>
+            <option>Religious function</option><option>Restaurant</option><option>Hotel</option>
+            <option>Catering event</option><option>Corporate event</option><option>Household</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Additional notes (optional)</label><textarea name="notes" placeholder="Anything the pickup team should know"></textarea></div>
+        <hr class="divider">
+        <h4>Pickup details</h4>
+        <div class="form-row">
+          <div class="field"><label>Pickup address</label><input type="text" name="pickupAddress" required placeholder="Full address"></div>
+          <div class="field"><label>Contact person</label><input type="text" name="contactName" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Phone number</label><input type="tel" name="phone" required placeholder="10-digit mobile number"></div>
+          <div class="field"><label>Preferred pickup time</label><input type="time" name="pickupTime" required></div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Create donation request</button>
+      </form>
+    </div>
+
+    <div id="step-tracking" hidden></div>
+  </div>
+
+  <!-- MY DONATIONS -->
+  <div id="tab-mine" hidden>
+    <div id="mine-list"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="tab-about" hidden>
+    <div class="grid" style="grid-template-columns:1fr 1fr;">
+      <div class="card">
+        <h4>Statuses your donation moves through</h4>
+        <ol style="padding-left:18px;color:var(--ink-soft);">
+          <li>Donation requested</li><li>Searching for delivery partner</li><li>Delivery partner assigned</li>
+          <li>Pickup on the way</li><li>Food collected</li><li>On the way to organization</li>
+          <li>Delivered</li><li>Donation completed</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>Food safety &amp; trust</h4>
+        <p style="color:var(--ink-soft);">We only show organizations that have confirmed they're currently accepting food, and never claim an organization is legally verified unless verification has actually happened. Storage condition and consume-by time are recorded for every donation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<div id="bottom-nav"></div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/donate.js"></script>
+</body>
+</html>

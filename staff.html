@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff dashboard — LastBite</title>
+<meta name="description" content="List food for Normal Sell or Preventing Sell, and manage your orders.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="staff">
+<div id="site-header"></div>
+
+<section class="wrap section" style="padding-bottom:0;">
+  <span class="eyebrow">Staff dashboard</span>
+  <h2 style="margin-bottom:4px;">Spice Route Kitchen</h2>
+  <p class="lede">Everything you list here is reviewed by our pricing engine and food-safety rules automatically.</p>
+  <div class="stat-grid" style="margin-top:20px;">
+    <div class="stat"><b id="stat-orders">0</b><span>Today's orders</span></div>
+    <div class="stat"><b id="stat-revenue">₹0</b><span>Today's revenue</span></div>
+    <div class="stat"><b id="stat-rescued">0</b><span>Meals rescued</span></div>
+    <div class="stat"><b id="stat-listings">0</b><span>Active listings</span></div>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="tabbar">
+    <button class="on" data-tab="add">Add a listing</button>
+    <button data-tab="listings">My listings</button>
+    <button data-tab="orders">Orders</button>
+  </div>
+
+  <!-- ADD LISTING -->
+  <div id="tab-add">
+    <div class="card">
+      <form id="listing-form">
+        <div class="form-row">
+          <div class="field"><label>Food name</label><input type="text" name="name" required placeholder="e.g. Chicken Biryani"></div>
+          <div class="field"><label>Category</label><select name="category" id="cat-select" required></select></div>
+        </div>
+        <div class="field"><label>Description</label><textarea name="description" placeholder="Short description for consumers"></textarea></div>
+        <div class="field"><label>Food image URL</label><input type="text" name="img" placeholder="Paste an image link, or leave blank for a default"></div>
+        <div class="form-row">
+          <div class="field"><label>Vegetarian?</label><select name="veg"><option value="true">Vegetarian</option><option value="false">Non-vegetarian</option></select></div>
+          <div class="field"><label>Quantity available</label><input type="number" name="qty" min="1" required value="10"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Normal selling price (₹)</label><input type="number" name="price" min="1" required value="150"></div>
+          <div class="field"><label>Hours until unsafe to serve</label><input type="number" name="hoursRemaining" min="0.5" step="0.5" required value="4"></div>
+        </div>
+
+        <div class="field">
+          <label>Sell type</label>
+          <div class="seg" id="selltype-seg">
+            <button type="button" class="on" data-type="normal">Normal Sell</button>
+            <button type="button" data-type="preventing">Preventing Sell</button>
+          </div>
+        </div>
+
+        <div id="price-preview-normal">
+          <p class="hint">Normal Sell: you set the price, and it stays as entered above.</p>
+        </div>
+        <div id="price-preview-rescue" class="calc-box" hidden>
+          <div class="item"><b id="prev-original">₹0</b><span>Original price</span></div>
+          <div class="item"><b id="prev-discount">0%</b><span>Rescue discount</span></div>
+          <div class="item"><b id="prev-price">₹0</b><span>LastBite price</span></div>
+          <div class="item"><b id="prev-saved">₹0</b><span>Amount saved</span></div>
+        </div>
+        <p class="hint">Preventing Sell prices are calculated automatically (60–70% off, based on time remaining and quantity) so listings can't be mispriced.</p>
+
+        <button class="btn btn-primary btn-block" type="submit" style="margin-top:14px;">Publish listing</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MY LISTINGS -->
+  <div id="tab-listings" hidden>
+    <div style="overflow-x:auto;">
+      <table id="listings-table">
+        <thead><tr><th>Food</th><th>Type</th><th>Price</th><th>Qty</th><th>Verification</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ORDERS -->
+  <div id="tab-orders" hidden>
+    <div style="overflow-x:auto;">
+      <table id="orders-table">
+        <thead><tr><th>Order</th><th>Items</th><th>Total</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty" id="orders-empty" hidden><div class="glyph">🧾</div><p>No orders yet today.</p></div>
+  </div>
+</section>
+
+<section class="wrap section section-soft" style="border-radius:20px;">
+  <span class="eyebrow">Coming soon</span>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="card"><span class="badge-soon">Coming soon</span><h4>Bulk pickup requests</h4><p class="hint">Schedule pickups for catering and event surplus.</p></div>
+    <div class="card"><span class="badge-soon">Coming soon</span><h4>Inventory sync</h4><p class="hint">Connect your POS system to auto-list surplus.</p></div>
+    <div class="card"><span class="badge-soon">Coming soon</span><h4>Admin pricing overrides</h4><p class="hint">Request an approved exception to the standard discount band.</p></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<div id="bottom-nav"></div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/staff.js"></script>
+</body>
+</html>

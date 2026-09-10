@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work &amp; Volunteer — LastBite</title>
+<meta name="description" content="Apply to become a LastBite delivery partner, or volunteer for a food-rescue campaign.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="join">
+<div id="site-header"></div>
+
+<section class="hero" style="padding:56px 0 60px;">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--amber);">Work for Justice · Volunteer</span>
+    <h1 style="font-size:38px;">Two ways to be part of LastBite.</h1>
+    <p class="lede">Deliver for pay, or give your time to a campaign — either way, you're helping surplus food reach another table.</p>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="tabbar">
+    <button class="on" data-tab="work" id="tab-btn-work">Delivery jobs</button>
+    <button data-tab="volunteer" id="tab-btn-volunteer">Volunteer</button>
+    <button data-tab="recruiter">Recruiter view (demo)</button>
+  </div>
+
+  <!-- WORK -->
+  <div id="tab-work">
+    <div class="split">
+      <div>
+        <h3>Become a LastBite delivery partner</h3>
+        <p class="lede">Flexible hours, a fee per delivery plus a distance bonus, and a role that keeps good food moving. Applications are reviewed by our recruiting team before approval.</p>
+        <ul style="color:var(--ink-soft);padding-left:18px;">
+          <li>Ride your own two-wheeler or bicycle</li>
+          <li>Get paid weekly, view earnings in the app</li>
+          <li>Documents are kept private and reviewed only by recruiters</li>
+        </ul>
+      </div>
+      <div class="card">
+        <form id="work-form">
+          <div class="form-row">
+            <div class="field"><label>Full name</label><input type="text" name="name" required></div>
+            <div class="field"><label>Age</label><input type="number" name="age" min="18" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Phone</label><input type="tel" name="phone" required></div>
+            <div class="field"><label>Email</label><input type="email" name="email" required></div>
+          </div>
+          <div class="field"><label>City</label><input type="text" name="city" required></div>
+          <div class="form-row">
+            <div class="field"><label>Vehicle type</label><select name="vehicle"><option>Two-wheeler</option><option>Bicycle</option><option>On foot</option></select></div>
+            <div class="field"><label>Driving license number</label><input type="text" name="license" placeholder="Leave blank if not applicable"></div>
+          </div>
+          <div class="field"><label>Emergency contact</label><input type="tel" name="emergency" required></div>
+          <div class="field"><label>Identity document (upload)</label><input type="file" name="idDoc"><p class="hint">Stored privately — visible only to recruiters, per our security rules.</p></div>
+          <button class="btn btn-primary btn-block" type="submit">Submit application</button>
+        </form>
+      </div>
+    </div>
+    <div id="work-status" style="margin-top:24px;"></div>
+  </div>
+
+  <!-- VOLUNTEER -->
+  <div id="tab-volunteer" hidden>
+    <div class="split">
+      <div>
+        <h3>Volunteer for a campaign</h3>
+        <p class="lede">Social service, open to anyone — no employment relationship required.</p>
+        <div class="card" style="margin-top:14px;">
+          <h4>Upcoming campaigns</h4>
+          <ul id="campaign-list" style="color:var(--ink-soft);padding-left:0;list-style:none;"></ul>
+        </div>
+      </div>
+      <div class="card">
+        <form id="volunteer-form">
+          <div class="form-row">
+            <div class="field"><label>Name</label><input type="text" name="name" required></div>
+            <div class="field"><label>Age</label><input type="number" name="age" min="14" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Phone</label><input type="tel" name="phone" required></div>
+            <div class="field"><label>Email</label><input type="email" name="email" required></div>
+          </div>
+          <div class="field"><label>Location</label><input type="text" name="location" required></div>
+          <div class="field"><label>Preferred campaign type</label>
+            <select name="campaignType"><option>Food collection</option><option>Food distribution</option><option>Community outreach</option><option>Awareness campaign</option><option>Donation drive</option><option>Event support</option></select>
+          </div>
+          <div class="field"><label>Skills / availability</label><textarea name="skills" placeholder="e.g. Weekends, has a two-wheeler, speaks Kannada &amp; English"></textarea></div>
+          <div class="field" style="display:flex;align-items:center;gap:8px;">
+            <input type="checkbox" name="consent" id="v-consent" required style="width:auto;">
+            <label for="v-consent" style="margin:0;">I consent to being contacted about volunteering opportunities.</label>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Register as a volunteer</button>
+        </form>
+      </div>
+    </div>
+    <div id="volunteer-status" style="margin-top:24px;"></div>
+  </div>
+
+  <!-- RECRUITER -->
+  <div id="tab-recruiter" hidden>
+    <p class="lede">A simplified preview of the recruiter dashboard described in the spec — review, approve, or reject applications.</p>
+    <div style="overflow-x:auto;">
+      <table id="recruiter-table">
+        <thead><tr><th>Applicant</th><th>Type</th><th>Submitted</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty" id="recruiter-empty" hidden><div class="glyph">📋</div><p>No applications submitted yet.</p></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<div id="bottom-nav"></div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/join.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore food near you — LastBite</title>
+<meta name="description" content="Browse normal-priced meals and Preventing Sell rescue deals near you.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="explore">
+
+<div id="site-header"></div>
+
+<section style="background:var(--forest-100);padding:28px 0;">
+  <div class="wrap">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+      <div>
+        <span class="eyebrow">📍 Indiranagar, Bengaluru</span>
+        <h2 style="margin:0;">What are you craving today?</h2>
+      </div>
+      <div style="flex:1;min-width:260px;max-width:420px;">
+        <input type="text" id="search-input" placeholder="Search food, restaurant, or cuisine">
+      </div>
+    </div>
+    <div class="tabbar" id="category-chips" style="margin-top:18px;border:none;"></div>
+  </div>
+</section>
+
+<section class="wrap" style="padding:24px 0 0;">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <button class="btn btn-ghost btn-sm filter-btn on" data-filter="all">All</button>
+    <button class="btn btn-ghost btn-sm filter-btn" data-filter="preventing">Rescue &amp; Save</button>
+    <button class="btn btn-ghost btn-sm filter-btn" data-filter="normal">Normal Sell</button>
+    <button class="btn btn-ghost btn-sm filter-btn" data-filter="veg">Vegetarian</button>
+    <button class="btn btn-ghost btn-sm filter-btn" data-filter="under99">Under ₹99</button>
+    <button class="btn btn-ghost btn-sm filter-btn" data-filter="ending">Ending soon</button>
+    <select id="sort-select" style="width:auto;margin-left:auto;">
+      <option value="distance">Sort: Nearest</option>
+      <option value="discount">Sort: Highest discount</option>
+      <option value="price">Sort: Price, low to high</option>
+      <option value="rating">Sort: Seller rating</option>
+    </select>
+  </div>
+</section>
+
+<section class="section" id="rescue">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <h3 id="results-title">Popular near you</h3>
+      <span id="results-count" class="hint"></span>
+    </div>
+    <div id="listing-grid" class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:8px;"></div>
+    <div id="empty-state" class="empty" hidden>
+      <div class="glyph">🍽️</div>
+      <p>No rescue deals match those filters right now — try widening your search.</p>
+    </div>
+  </div>
+</section>
+
+<!-- item detail modal -->
+<div class="overlay" id="item-overlay"></div>
+<div class="modal" id="item-modal">
+  <div class="modal-card" id="item-modal-body"></div>
+</div>
+
+<!-- cart drawer -->
+<div class="overlay" id="cart-overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-head">
+    <strong>Your cart</strong>
+    <button class="icon-btn" id="cart-close">✕</button>
+  </div>
+  <div class="drawer-body" id="cart-body"></div>
+  <div class="drawer-foot" id="cart-foot"></div>
+</div>
+
+<div id="site-footer"></div>
+<div id="bottom-nav"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/explore.js"></script>
+</body>
+</html>
